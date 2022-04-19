@@ -1,0 +1,16 @@
+
+<br>
+<span *ngIf="personajes.length==0" [ngStyle]="{'text-align': 'center', 'display': 'block'}">Hubo algun error en la conexion con la API, por favor revise</span>
+
+<mat-grid-list cols="3" rowHeight="3:2">
+  <mat-grid-tile *ngFor="let card of personajes">
+    <mat-card class="example-card">
+      <mat-card-title-group>
+        <mat-card-title>{{ card.name }}</mat-card-title>
+        <mat-card-subtitle [ngStyle]="{'color': card.status.toUpperCase() ==='ALIVE'? 'green': 'red'} ">{{ card.status }}</mat-card-subtitle>
+        <img mat-card-xl-image [src]="card.image" alt="" />
+      </mat-card-title-group>
+      <mat-card-content> </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

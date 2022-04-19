@@ -1,0 +1,33 @@
+
+<form novalidate [formGroup]="form">
+  <mat-form-field class="example-full-width nopadding" appearance="fill">
+    <mat-label>Titulo</mat-label>
+    <input matInput placeholder="Ex. El Hobbit"  formControlName="title">
+  </mat-form-field>
+  <br>
+  <span *ngIf="form.get('title')?.hasError('required') && form.get('title')?.touched" style="color: red">Campo requerido</span>
+  <br />
+  <br />
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Cuerpo</mat-label>
+    <textarea matInput  formControlName="body"></textarea>
+  </mat-form-field>
+  <br>
+  <span *ngIf="form.get('body')?.hasError('required') && form.get('body')?.touched" style="color: red">Campo requerido</span>
+  <br />
+  <br />
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Postal Code</mat-label>
+    <input matInput type="number" formControlName="userId">
+  </mat-form-field>
+  <span *ngIf="form.get('userId')?.hasError('min')" style="color: red">Tiene que ser minimo 1</span>
+  <span *ngIf="form.get('userId')?.hasError('max')" style="color: red">Tiene que ser maximo 100</span>
+
+
+
+<br>
+    <button mat-raised-button color="primary" [disabled]="form.invalid"  type="submit" (click)="addPost()">Submit</button>
+
+</form>
